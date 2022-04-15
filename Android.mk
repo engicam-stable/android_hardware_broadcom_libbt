@@ -14,9 +14,9 @@ endif
 
 BDROID_DIR := $(TOP_DIR)system/bt
 
-ifeq ($(strip $(USE_BLUETOOTH_BCM4343)),true)
+#ifeq ($(strip $(USE_BLUETOOTH_BCM4343)),true)
 LOCAL_CFLAGS += -DUSE_BLUETOOTH_BCM4343
-endif
+#endif
 
 LOCAL_CFLAGS += \
         -Wall \
@@ -54,8 +54,6 @@ LOCAL_SHARED_LIBRARIES := \
         liblog
 
 LOCAL_MODULE := libbt-vendor
-LOCAL_LICENSE_KINDS := SPDX-license-identifier-Apache-2.0
-LOCAL_LICENSE_CONDITIONS := notice
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_CLASS := SHARED_LIBRARIES
 LOCAL_MODULE_OWNER := broadcom
@@ -64,5 +62,10 @@ LOCAL_PROPRIETARY_MODULE := true
 include $(LOCAL_PATH)/vnd_buildcfg.mk
 
 include $(BUILD_SHARED_LIBRARY)
-
+ifeq ($(TARGET_PRODUCT), evk_7ulp)
+    include $(LOCAL_PATH)/conf/fsl/evk_7ulp/Android.mk
+endif
+ifeq ($(TARGET_PRODUCT), starterkit_8mm)
+    include $(LOCAL_PATH)/conf/engicam/starterkit_8mm/Android.mk
+endif
 endif # BOARD_HAVE_BLUETOOTH_BCM
