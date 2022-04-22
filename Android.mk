@@ -68,4 +68,7 @@ endif
 ifeq ($(TARGET_PRODUCT), starterkit_8mm)
     include $(LOCAL_PATH)/conf/engicam/starterkit_8mm/Android.mk
 endif
+ifeq ($(TARGET_PRODUCT), starterkit_8mp)
+    include $(LOCAL_PATH)/conf/engicam/starterkit_8mp/Android.mk
+endif
 endif # BOARD_HAVE_BLUETOOTH_BCM
